@@ -9,5 +9,5 @@ pip3 install ray
 
 - run:
 ```
-python3 teste.py
+python3 teste_thread.py
 ```
