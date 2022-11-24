@@ -1,5 +1,9 @@
 # mongodb_thread_test
 
+- Configuration
+
+use uri variable to set your connection string.
+
 - Requirements:
 
 ```
