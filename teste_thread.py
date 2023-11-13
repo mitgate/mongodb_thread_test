@@ -13,7 +13,7 @@ import ray
 import logging
 
 
-NUMBERS = [ii for ii in range(100)]
+NUMBERS = list(range(100))
 RUNS = 2
 
 uri = "mongodb://192.168.224.5:27017/?directConnection=true&authSource=admin/mydatabase"
@@ -35,8 +35,7 @@ ray.init()
 
 def insert_values(coll, tipo, values):
     docs = [{"sequencia": value, "tipo": tipo} for value in values]
-    result = coll.insert_many(docs)
-    return result
+    return coll.insert_many(docs)
 
 
 async def update(coll):
@@ -79,7 +78,6 @@ def func1(runs, NUMBERS):
                         {"$set": {"tipo": x["tipo"] + ", thread A Alterou"}},
                         upsert=False,
                     )
-                    pass
             except Exception as e:
                 logging.info(e)
 
@@ -93,7 +91,6 @@ def func1(runs, NUMBERS):
                         {"$set": {"tipo": x["tipo"] + ", thread A Alterou"}},
                         upsert=False,
                     )
-                    pass
             except Exception as e:
                 logging.info(e)
 
@@ -132,7 +129,6 @@ def func2(runs, NUMBERS):
                         {"$set": {"tipo": x["tipo"] + ", thread B Alterou"}},
                         upsert=False,
                     )
-                    pass
             except Exception as e:
                 logging.info(e)
 
@@ -146,7 +142,6 @@ def func2(runs, NUMBERS):
                         {"$set": {"tipo": x["tipo"] + ", thread B Alterou"}},
                         upsert=False,
                     )
-                    pass
             except Exception as e:
                 logging.info(e)
 
